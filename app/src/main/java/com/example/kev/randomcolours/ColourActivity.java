@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class ColourActivity extends AppCompatActivity {
 
     @Override
@@ -24,5 +26,16 @@ public class ColourActivity extends AppCompatActivity {
         int c = Color.rgb(red,blue,green);
 
         findViewById(R.id.button).setBackgroundColor(c);
+
+        double redPercent = (red/255.0)*100;
+        double bluePercent = (blue/255.0)*100;
+        double greenPercent = (green/255.0)*100;
+
+        String r = String.format(Locale.CANADA, "%.0f", redPercent);
+        String b = String.format(Locale.CANADA, "%.0f", bluePercent);
+        String g = String.format(Locale.CANADA, "%.0f", greenPercent);
+
+        String phrase = "R=" + r + "%, G=" + g + "%, B=" + b + "%";
+        ((TextView) findViewById(R.id.textView)).setText(phrase);
     }
 }
